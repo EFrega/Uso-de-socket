@@ -46,6 +46,7 @@ def manejar_conexion(servidor_socket):
                 mensaje = cliente_socket.recv(1024).decode() # Recibe hasta 1024 bytes del cliente y los decodifica
                 if not mensaje: # Si no recibe datos (cliente desconectado), rompe el bucle
                     break
+                print(f"Mensaje recibido de {direccion[0]}: {mensaje}") # Imprime el mensaje recibido
                 timestamp = guardar_mensaje(mensaje, direccion[0])# Llama a guardar el mensaje y obtiene el timestamp
                 respuesta = f"Mensaje recibido en {timestamp}: {mensaje}" # Crea el mensaje de respuesta con el timestamp
                 cliente_socket.sendall(respuesta.encode()) # Envía la respuesta al cliente
